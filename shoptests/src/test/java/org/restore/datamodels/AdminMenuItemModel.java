@@ -1,4 +1,4 @@
-package org.restore.dataproviders;
+package org.restore.datamodels;
 
 import java.util.ArrayList;
 
