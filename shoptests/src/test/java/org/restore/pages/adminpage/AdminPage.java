@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.restore.pages.adminpage.components.MainAdminMenu;
 
 import java.time.Duration;
 
@@ -78,4 +79,6 @@ public class AdminPage {
         String searchHeaderStringXpath = String.format("//h1[normalize-space(.) = '%s']", headerToFind);
         return driverHere.findElement(By.xpath(searchHeaderStringXpath)).isDisplayed();
     }
+
+    public MainAdminMenu getMainAdminMenu() {return new MainAdminMenu(driverHere);}
 }

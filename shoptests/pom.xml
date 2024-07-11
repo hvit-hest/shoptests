@@ -125,7 +125,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-  <!--      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <build>
@@ -157,8 +157,8 @@
                 <version>3.8.1</version>
                 <configuration>
                     <release>11</release>
- <!--                   <source>11</source>
-                    <target>11</target>-->
+                   <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
         </plugins>

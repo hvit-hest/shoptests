@@ -8,8 +8,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 
@@ -20,8 +18,8 @@ import java.util.List;
 
 public class WebDriverSelection {
 
-     private String webDriverName = TestProperties.getWebDriverNameFromProperties();
-    private String remoteIp = TestProperties.getRemoteIpFromProperties();
+    private final String webDriverName = TestProperties.getWebDriverNameFromProperties();
+    private final String remoteIp = TestProperties.getRemoteIpFromProperties();
 
     public WebDriver getDriverFromProperties() {
         WebDriver myPersonalDriver = null;

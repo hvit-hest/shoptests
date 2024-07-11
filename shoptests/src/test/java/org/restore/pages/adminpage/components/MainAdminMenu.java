@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class MainAdminMenu {
-    private WebDriver myPersonalDriver;
-    private String searchForMainItemXpath = "//li//span[contains(@class,'icon')]/following-sibling::span[.=%s]";
-    private String searchForSubMenuItemXpath = "//li[starts-with(@id,'doc')]/*[.='%s']";
+    private final WebDriver myPersonalDriver;
+    private final String searchForMainItemXpath = "//li//span[contains(@class,'icon')]/following-sibling::span[.='%s']";
+    private final String searchForSubMenuItemXpath = "//li[starts-with(@id,'doc')]/*[.='%s']";
 
     public MainAdminMenu(WebDriver myPersonalDriver) {
         this.myPersonalDriver = myPersonalDriver;
@@ -27,6 +27,14 @@ public class MainAdminMenu {
         if (!menuOptionWe.getCssValue("color").equals("rgba(255,0,0,1)")) {
             myPersonalDriver.navigate().refresh();
         }
+    }
+
+    public void selectMenuOption(String menuOption) {
+        selectMenuOption(menuOption, searchForMainItemXpath);
+    }
+
+    public void selectSubMenuOption(String subMenuOption) {
+        selectMenuOption(subMenuOption, searchForSubMenuItemXpath);
     }
 }
 
