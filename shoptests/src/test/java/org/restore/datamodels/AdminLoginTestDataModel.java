@@ -1,6 +1,6 @@
 package org.restore.datamodels;
 
-public class LoginTestDataModel {
+public class AdminLoginTestDataModel {
     private boolean testPass;
     private String adminLogin;
     private String adminPassword;

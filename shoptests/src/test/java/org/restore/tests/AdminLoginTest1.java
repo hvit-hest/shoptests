@@ -1,8 +1,8 @@
 package org.restore.tests;
 
 import org.openqa.selenium.WebDriver;
-import org.restore.datamodels.LoginTestDataModel;
-import org.restore.dataproviders.LoginTestData;
+import org.restore.datamodels.AdminLoginTestDataModel;
+import org.restore.dataproviders.AdminLoginTestData;
 import org.restore.pages.adminpage.AdminPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -21,8 +21,8 @@ public class AdminLoginTest1 extends BaseTest {
         adminPage.open();
     }
 
-    @Test(dataProvider = "loginData", dataProviderClass = LoginTestData.class)
-    public void loginTest(LoginTestDataModel testData) {
+    @Test(dataProvider = "loginData", dataProviderClass = AdminLoginTestData.class)
+    public void loginTest(AdminLoginTestDataModel testData) {
         String login = testData.getAdminLogin();
         String password = testData.getAdminPassword();
         boolean testPass = testData.getTestPass();
