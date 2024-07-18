@@ -1,4 +1,4 @@
-package org.restore.pages.countiespage;
+package org.restore.pages.geozonespage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,22 +7,22 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.restore.pages.commoncomponents.CommonTable;
 
-public class CountriesPage {
+public class GeoZonesPage {
 
-    private final String countriesPageUrl = "http://localhost/litecart/admin/?app=countries&doc=countries";
-    private final WebDriver driverHere;
+    private String geoZonesPageUrl = "http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones";
+    private WebDriver driverHere;
     private String countryXpath = "//table[@class='dataTable']//td/a[@href][.= '%s']";
 
     @FindBy(css = "h1")
     private WebElement pageHeader;
 
-    public CountriesPage(WebDriver myPersonalDriver) {
-        this.driverHere = myPersonalDriver;
+    public GeoZonesPage(WebDriver myPersonalDriver) {
+        driverHere = myPersonalDriver;
         PageFactory.initElements(driverHere, this);
     }
 
     public void open() {
-        driverHere.navigate().to(countriesPageUrl);
+        driverHere.navigate().to(geoZonesPageUrl);
         driverHere.manage().window().maximize();
     }
 
@@ -32,8 +32,7 @@ public class CountriesPage {
                 By.cssSelector("td"));
     }
 
-
     public void clickCountry(String country) {
-           driverHere.findElement(By.xpath(String.format(countryXpath, country))).click();
+        driverHere.findElement(By.xpath(String.format(countryXpath, country))).click();
     }
 }

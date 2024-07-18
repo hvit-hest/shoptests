@@ -1,4 +1,4 @@
-package org.restore.pages.countiespage;
+package org.restore.pages.countrydatapage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,33 +7,25 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.restore.pages.commoncomponents.CommonTable;
 
-public class CountriesPage {
+public class CountryDataPage {
 
-    private final String countriesPageUrl = "http://localhost/litecart/admin/?app=countries&doc=countries";
     private final WebDriver driverHere;
-    private String countryXpath = "//table[@class='dataTable']//td/a[@href][.= '%s']";
 
     @FindBy(css = "h1")
     private WebElement pageHeader;
 
-    public CountriesPage(WebDriver myPersonalDriver) {
+    public CountryDataPage(WebDriver myPersonalDriver) {
         this.driverHere = myPersonalDriver;
         PageFactory.initElements(driverHere, this);
     }
 
     public void open() {
-        driverHere.navigate().to(countriesPageUrl);
         driverHere.manage().window().maximize();
     }
 
-    public CommonTable getCountriesTable() {
+    public CommonTable getTimeZonesTable() {
         return new CommonTable(driverHere, By.cssSelector("table.dataTable"),
-                By.cssSelector("tr.row"),
+                By.xpath(".//tr[not(@class='header') and .//input[not(@type='text')]]"),
                 By.cssSelector("td"));
-    }
-
-
-    public void clickCountry(String country) {
-           driverHere.findElement(By.xpath(String.format(countryXpath, country))).click();
     }
 }

@@ -68,6 +68,6 @@ public class CommonTable {
     public WebElement getRowByText(String textInRow) { return getRowsByText(textInRow).get(0);}
 
     public WebElement getCellByTextFromColumn(int column, String textInCell) {
-        return getRowCells(getRowByText(textInCell)).get(0);
+        return getRowCells(getRowByText(textInCell)).get(column);
     }
 }
