@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.restore.pages.usermainpage.components.DuckDetails;
+import org.restore.pages.usermainpage.components.DucksBlock;
 import org.restore.pages.usermainpage.components.UserLoginForm;
 
 import java.util.List;
@@ -54,5 +56,25 @@ public class UserMainPage {
 
     public List<WebElement> getDuckProducts() {
         return duckProducts;
+    }
+
+    public List<WebElement> getDucksWEs(DucksBlock ducksBlock) {
+        return driverHere.findElement(ducksBlock.getBlockSelector()).
+                findElements(By.cssSelector("li.product"));
+    }
+
+    public DuckDetails getDuck(DucksBlock ducksBlock, int numberInList) {
+        DuckDetails duckDetails = null;
+        List<WebElement> ducksList = getDucksWEs(ducksBlock);
+        if (ducksList.size() != 0)
+            duckDetails = new DuckDetails(ducksList.get(numberInList));
+        return duckDetails;
+    }
+
+    public void openParticularDuckDetailsPage(DucksBlock ducksBlock, int numberInList) {
+        List<WebElement> getDucksWEs = getDucksWEs(ducksBlock);
+        if (getDucksWEs.size() > 0) {
+            getDucksWEs.get(numberInList).click();
+        }
     }
 }
