@@ -1,14 +1,18 @@
 package org.restore.utils;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static java.math.BigDecimal.ROUND_HALF_UP;
 
-public class GoodsDetailsComparisonUtils {
+public class Utils {
 
     public static List<Integer> getNumberOfColor(String color) {
         Pattern pattern = Pattern.compile("\\d+");
@@ -32,5 +36,27 @@ public class GoodsDetailsComparisonUtils {
     public static int  compareFonts (String priceOneFont, String priceTwoFont) {
         //Using comparePrices since no difference for the case. We just need numbers to compare
         return comparePrices (priceOneFont, priceTwoFont);
+    }
+
+    public static String emailGenerator() {
+        String[] forMail = UUID.randomUUID().toString().split("-");
+        String topDomain = RandomStringUtils.randomAlphabetic(2,8);
+        return String.format("user%s@mail%s.%s", forMail[0]+forMail[1],forMail[2]+forMail[3], topDomain );
+    }
+
+    public static String nameGenerator() {
+        return StringUtils.capitalize(RandomStringUtils.randomAlphabetic(1,20).toLowerCase());
+    }
+
+    public static String addressGenerator() {
+        return String.format("%s %s %s %s",
+                RandomStringUtils.randomAlphanumeric(1, 15),
+                RandomStringUtils.randomAlphanumeric(1, 15),
+                RandomStringUtils.randomAlphanumeric(1, 15),
+                RandomStringUtils.randomAlphanumeric(1, 15));
+    }
+
+    public static String phoneGenerator() {
+        return String.format("+%s", RandomStringUtils.randomNumeric(8));
     }
 }

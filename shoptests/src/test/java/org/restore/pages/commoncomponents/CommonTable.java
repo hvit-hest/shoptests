@@ -70,4 +70,9 @@ public class CommonTable {
     public WebElement getCellByTextFromColumn(int column, String textInCell) {
         return getRowCells(getRowByText(textInCell)).get(column);
     }
+
+    public void clickCellInRow(WebElement row, int cellOrder) {
+        getRowCells(row).get(cellOrder).click();
+    }
+
 }

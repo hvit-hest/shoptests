@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.restore.pages.duckdetailspage.DuckDetailsPage;
 import org.restore.pages.duckdetailspage.components.DuckDetailsSection;
 import org.restore.pages.usermainpage.UserMainPage;
-import org.restore.utils.GoodsDetailsComparisonUtils;
 import org.restore.utils.TestProperties;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.restore.pages.usermainpage.components.DucksBlock.CAMPAIGNS;
-import static org.restore.utils.GoodsDetailsComparisonUtils.*;
+import static org.restore.utils.Utils.*;
 
 public class GoodsDetailsTest extends BaseTest {
     private WebDriver driverHere;

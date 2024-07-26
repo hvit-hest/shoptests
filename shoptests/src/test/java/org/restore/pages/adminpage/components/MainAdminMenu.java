@@ -29,8 +29,9 @@ public class MainAdminMenu {
         }
     }
 
-    public void selectMenuOption(String menuOption) {
+    public MainAdminMenu selectMenuOption(String menuOption) {
         selectMenuOption(menuOption, searchForMainItemXpath);
+        return this;
     }
 
     public void selectSubMenuOption(String subMenuOption) {
