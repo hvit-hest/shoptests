@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.restore.pages.usermainpage.UserMainPage;
+import org.restore.pages.usermainpage.components.DucksBlock;
 import org.restore.utils.TestProperties;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -29,17 +30,16 @@ public class StickersTest extends BaseTest {
 
     @Test
     public void stickersTest() {
-        String stickerCSS = "[class^=sticker]";
+        String stickerCSS = "[class^='sticker']";
         SoftAssert softAssertion = new SoftAssert();
-        userMainPage.getDuckProducts().forEach(
+        userMainPage.getDucksWEs(DucksBlock.CAMPAIGNS).forEach(
                 we -> {
-
                     List<WebElement> stickersPerDuck = we.findElements(By.cssSelector(stickerCSS));
                     softAssertion.assertTrue(stickersPerDuck.size() == 1 &&
                             !stickersPerDuck.get(0).getText().trim().isEmpty(),
                             String.format("%s\n-----------\n", we.getText()));
                 }
         );
-        softAssertion.assertAll();
+        softAssertion.assertAll("Test did not pass");
     }
 }
