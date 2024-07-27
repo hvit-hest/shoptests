@@ -52,7 +52,7 @@ public class CommonTable {
                 findElement(locator).getText().trim()).collect(toList());
     }
 
-    private List<WebElement> getCellsByText(String textInCell) {
+    public List<WebElement> getCellsByText(String textInCell) {
         return getTable().findElements(cellBy).stream().
                 filter(r -> r.getText().contains(textInCell)).collect (toList());
     }

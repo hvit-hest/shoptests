@@ -49,6 +49,10 @@ public class Utils {
     }
 
     public static String addressGenerator() {
+        return wordsGenerator();
+    }
+
+    public static String wordsGenerator() {
         return String.format("%s %s %s %s",
                 RandomStringUtils.randomAlphanumeric(1, 15),
                 RandomStringUtils.randomAlphanumeric(1, 15),
