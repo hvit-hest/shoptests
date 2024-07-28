@@ -1,20 +1,37 @@
 package org.restore.pages.duckdetailspage.components;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
 import java.util.HashMap;
 import java.util.List;
 
 public class DuckDetailsSection {
 
+    private WebDriver driverHere;
+    private By rootDuckDetailsBy = By.cssSelector("#box-product");
     private WebElement rootDuckDetailsWe;
     private By duckRegularPriceBy = By.cssSelector(".regular-price,.price");
     private By duckCampaignPriceBy = By.cssSelector(".campaign-price");
+    private By addToCartButtonBy = By.cssSelector("button[name='add_cart_product']");
+    private By quantityFieldBy = By.cssSelector("input[name='quantity']");
+    private By sizeSelectionBy = By.cssSelector("select[name='options[Size]']");
 
 
     public DuckDetailsSection(WebElement rootDuckDetailsWe) {
         this.rootDuckDetailsWe = rootDuckDetailsWe;
     }
 
+    public DuckDetailsSection(WebDriver myPersonalDriver) {
+        this.driverHere = myPersonalDriver;
+        this.rootDuckDetailsWe = driverHere.findElement(rootDuckDetailsBy);
+    }
+
+
+    public Select getDropDown(By locatorBy) {
+        return new Select(rootDuckDetailsWe.findElement(locatorBy));
+    }
 
     public HashMap<String, String> getDuckData() {
         HashMap<String, String> DuckDetails = new HashMap<String, String>();
@@ -44,4 +61,30 @@ public class DuckDetailsSection {
 
         return DuckDetails;
     }
+
+    public void addDuckToCart(String size, int quantity) {
+        if (rootDuckDetailsWe.findElements(sizeSelectionBy).size() > 0)
+            getDropDown(sizeSelectionBy).selectByVisibleText(size);
+        WebElement quantityWe = rootDuckDetailsWe.findElement(quantityFieldBy);
+        quantityWe.clear();
+        quantityWe.sendKeys(Integer.toString(quantity));
+
+        pressAddToCartButton();
+    }
+
+    public void addDuckToCart(int quantity) {
+
+        WebElement quantityWe = rootDuckDetailsWe.findElement(quantityFieldBy);
+        quantityWe.clear();
+        quantityWe.sendKeys(Integer.toString(quantity));
+        if (rootDuckDetailsWe.findElements(sizeSelectionBy).size() > 0)
+            getDropDown(sizeSelectionBy).selectByVisibleText("Small");
+
+        pressAddToCartButton();
+    }
+
+    public void pressAddToCartButton() {
+        rootDuckDetailsWe.findElement(addToCartButtonBy).click();
+    }
 }
+

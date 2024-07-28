@@ -11,26 +11,26 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    private WebDriver myPersonalDriver;
+    private WebDriver driverHere;
 
     @BeforeClass
     public void start() {
-        myPersonalDriver = new WebDriverSelection().getDriverFromProperties();
-        myPersonalDriver.manage().timeouts().
+        driverHere = new WebDriverSelection().getDriverFromProperties();
+        driverHere.manage().timeouts().
                 implicitlyWait(TestProperties.getImplicitWaitFromProperties(), TimeUnit.SECONDS);
 
     }
 
     public WebDriver getWebDriver() {
-        return myPersonalDriver;
+        return driverHere;
     }
 
     @AfterClass
     public void stop() {
-        if (myPersonalDriver != null) ;
+        if (driverHere != null) ;
         {
-            myPersonalDriver.quit();
-            myPersonalDriver = null;
+            driverHere.quit();
+            driverHere = null;
         }
     }
 }

@@ -32,6 +32,9 @@ public class UserMainPage {
     @FindBy(xpath = "//a[contains(., 'New customer')]")
     private WebElement newCustomerLink;
 
+    @FindBy(xpath = "//*[@id='cart']//a[contains(.,'Checkout')]")
+    private WebElement checkOutButton;
+
 
     public UserMainPage(WebDriver myPersonalDriver) {
         this.driverHere = myPersonalDriver;
@@ -69,8 +72,16 @@ public class UserMainPage {
         }
     }
 
-    public List<WebElement> getDuckProducts() {
+    public List<WebElement> getAllDuckProducts() {
         return duckProducts;
+    }
+
+    public WebElement getDuckFromAllByOrderWE(int i) {
+        return getAllDuckProducts().get(i);
+    }
+
+    public void selectDuckByItsOrder(int orderInDucksList) {
+        getDuckFromAllByOrderWE(orderInDucksList).click();
     }
 
     public List<WebElement> getDucksWEs(DucksBlock ducksBlock) {
@@ -95,5 +106,9 @@ public class UserMainPage {
 
     public void clickNewCustomerLink() {
         newCustomerLink.click();
+    }
+
+    public void clickCheckOutLink() {
+        checkOutButton.click();
     }
 }

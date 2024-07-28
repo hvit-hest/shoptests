@@ -42,8 +42,11 @@ public class DuckDetailsPage {
         return quantityTemplateXpath;
     }
 
-    public WebElement getCartCounter() {
+    public WebElement getCartCounterWE() {
         return driverHere.findElement(cartQuantityBy);
     }
 
+    public String getCartCounter() {
+        return driverHere.findElement(cartQuantityBy).getText();
+    }
 }
