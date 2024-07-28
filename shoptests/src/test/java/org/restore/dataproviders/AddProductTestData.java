@@ -1,7 +1,6 @@
 package org.restore.dataproviders;
 
 import com.google.gson.reflect.TypeToken;
-import org.restore.datamodels.AdminMenuTestDataModel;
 import org.restore.datamodels.ProductDataModel;
 import org.testng.annotations.DataProvider;
 
