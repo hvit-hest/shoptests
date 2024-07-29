@@ -11,7 +11,7 @@ public class CountriesPage {
 
     private final String countriesPageUrl = "http://localhost/litecart/admin/?app=countries&doc=countries";
     private final WebDriver driverHere;
-    private String countryXpath = "//table[@class='dataTable']//td/a[@href][.= '%s']";
+    private String countryByNameXpathTemplate = "//table[@class='dataTable']//td/a[@href][.= '%s']";
 
     @FindBy(css = "h1")
     private WebElement pageHeader;
@@ -32,8 +32,7 @@ public class CountriesPage {
                 By.cssSelector("td"));
     }
 
-
     public void clickCountry(String country) {
-           driverHere.findElement(By.xpath(String.format(countryXpath, country))).click();
+           driverHere.findElement(By.xpath(String.format(countryByNameXpathTemplate, country))).click();
     }
 }
