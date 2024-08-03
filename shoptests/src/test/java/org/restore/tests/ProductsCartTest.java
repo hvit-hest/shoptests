@@ -40,8 +40,6 @@ public class ProductsCartTest extends BaseTest {
 
         //add first three ducks
         for (int i = 0; i < 3; i++) {
-            userMainPage = new UserMainPage(driverHere);
-            userMainPage.open();
             userMainPage.selectDuckByItsOrder(i);
             DuckDetailsPage duckDetailsPage = new DuckDetailsPage(driverHere);
             String cardCounter = duckDetailsPage.getCartCounter();
@@ -49,6 +47,8 @@ public class ProductsCartTest extends BaseTest {
             //Check cart's counter
             wait.until(ExpectedConditions.invisibilityOfElementWithText(duckDetailsPage.getCartQuantityBy(), cardCounter));
             softAssert.assertEquals( duckDetailsPage.getCartCounter(), Integer.toString(Integer.parseInt(cardCounter) + 1));
+            userMainPage = new UserMainPage(driverHere);
+            userMainPage.open();
         }
 
         userMainPage.clickCheckOutLink();
@@ -79,7 +79,7 @@ public class ProductsCartTest extends BaseTest {
             //wait until stale table disappears, it has to
             wait.until(ExpectedConditions.stalenessOf(oldPaymentDueTable));
         }
-        softAssert.assertEquals(checkOutPage.getNoItemMessage(), "There are no items in your cart.");
+        softAssert.assertTrue(checkOutPage.thereIsNoMoreDucksInCartMessage());
         softAssert.assertAll();
     }
 }

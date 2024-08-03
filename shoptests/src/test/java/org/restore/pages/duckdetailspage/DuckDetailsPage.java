@@ -5,7 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.restore.pages.duckdetailspage.components.DuckDetailsSection;
+
+import java.time.Duration;
 
 public class DuckDetailsPage {
     private WebDriver driverHere;
@@ -48,5 +52,14 @@ public class DuckDetailsPage {
 
     public String getCartCounter() {
         return driverHere.findElement(cartQuantityBy).getText();
+    }
+
+    public void waitSecondsTillDuckCounterChange(String cardCounter, int seconds) {
+        WebDriverWait wait = new WebDriverWait(driverHere, Duration.ofSeconds(4));
+        wait.until(ExpectedConditions.invisibilityOfElementWithText(cartQuantityBy, cardCounter));
+    }
+
+    public void waitTillDuckCounterChange(String cardCounter) {
+        waitSecondsTillDuckCounterChange(cardCounter, 4);
     }
 }

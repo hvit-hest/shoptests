@@ -34,6 +34,9 @@ public class CartFormSection {
         return removeCartButtonBy;
     }
 
+    private List<WebElement> getRemoveCardButtons() {
+        return driverHere.findElements(removeCartButtonBy);
+    }
 
     public void removeAllItems() {
         WebDriverWait wait = new WebDriverWait(driverHere, Duration.ofSeconds(4));
@@ -58,5 +61,18 @@ public class CartFormSection {
             wait.until(ExpectedConditions.stalenessOf(we));
 
         }
+    }
+
+    public void stopRunningLineOfDucks() {
+        if (getShortCuts().size() > 0)
+            try {
+                getShortCuts().get(0).click();
+            } catch (StaleElementReferenceException se) {
+                getShortCuts().get(0).click();
+            }
+    }
+
+    public List<WebElement> getEnabledRemoveDuckButtons() {
+        return getRemoveCardButtons().stream().filter(WebElement::isEnabled).collect(Collectors.toList());
     }
 }
