@@ -33,8 +33,6 @@ public class PageObjectCartTest extends BaseTest {
     @Test
     public void productsCartTest() {
         SoftAssert softAssert = new SoftAssert();
-        WebDriverWait wait = new WebDriverWait(driverHere, Duration.ofSeconds(5));
-
         //add first three ducks
         for (int i = 0; i < 3; i++) {
             userMainPage.selectDuckByItsOrder(i);
