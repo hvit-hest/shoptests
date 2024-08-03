@@ -58,6 +58,6 @@ public class TestProperties {
     }
 
     public static String getRemoteIpFromProperties() {
-        return getProperties().getProperty("remote_url");
+        return getProperties().getProperty("remoteUrl");
     }
 }

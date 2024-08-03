@@ -15,13 +15,13 @@ public class AdminPageMenuTest extends BaseTest {
 
     private final String adminLogin = TestProperties.getAdminNameFromProperties();
     private final String adminPassword = TestProperties.getAdminPasswordFromProperties();
-    private WebDriver myPersonalDriver;
+    private WebDriver driverHere;
     private AdminPage adminPage;
 
     @BeforeClass
     public void beforeClass() {
-        myPersonalDriver = getWebDriver();
-        adminPage = new AdminPage(myPersonalDriver);
+        driverHere = getWebDriver();
+        adminPage = new AdminPage(driverHere);
         adminPage.open();
         adminPage.login(adminLogin, adminPassword);
     }

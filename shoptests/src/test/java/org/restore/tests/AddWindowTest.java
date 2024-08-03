@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.restore.dataproviders.AddWindowTestData;
 import org.restore.pages.adminpage.AdminPage;
-import org.restore.pages.countiespage.CountriesPage;
+import org.restore.pages.countriespage.CountriesPage;
 import org.restore.pages.editcountrypage.EditCountryPage;
 import org.restore.utils.TestProperties;
 import org.testng.annotations.BeforeClass;

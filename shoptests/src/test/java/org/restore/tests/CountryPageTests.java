@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.restore.pages.adminpage.AdminPage;
 import org.restore.pages.commoncomponents.CommonTable;
-import org.restore.pages.countiespage.CountriesPage;
+import org.restore.pages.countriespage.CountriesPage;
 import org.restore.pages.countrydatapage.CountryDataPage;
 import org.restore.pages.editgeozonespage.EditGeoZonesPage;
 import org.restore.pages.geozonespage.GeoZonesPage;

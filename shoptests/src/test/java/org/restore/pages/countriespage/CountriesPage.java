@@ -1,4 +1,4 @@
-package org.restore.pages.countiespage;
+package org.restore.pages.countriespage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

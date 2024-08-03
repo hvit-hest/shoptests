@@ -19,7 +19,7 @@ import java.util.List;
 public class WebDriverSelection {
 
     private final String webDriverName = TestProperties.getWebDriverNameFromProperties();
-    private final String remoteIp = TestProperties.getRemoteIpFromProperties();
+    private final String remoteUrl = TestProperties.getRemoteIpFromProperties();
 
     public WebDriver getDriverFromProperties() {
         WebDriver myPersonalDriver = null;
@@ -43,7 +43,8 @@ public class WebDriverSelection {
             case "remote_chrome":
                 try {
                     ChromeOptions chromeOptions = new ChromeOptions();
-                    myPersonalDriver = new RemoteWebDriver(new URL(remoteIp), chromeOptions);
+                    chromeOptions.setPlatformName("WIN10");
+                    myPersonalDriver = new RemoteWebDriver(new URL(remoteUrl), chromeOptions);
                 } catch (MalformedURLException mue) {
                     mue.printStackTrace();
                 }
@@ -51,7 +52,7 @@ public class WebDriverSelection {
             case "remote_firefox":
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 try {
-                    myPersonalDriver = new RemoteWebDriver(new URL(remoteIp), firefoxOptions);
+                    myPersonalDriver = new RemoteWebDriver(new URL(remoteUrl), firefoxOptions);
                 } catch (MalformedURLException mue) {
                     mue.printStackTrace();
                 }
@@ -99,7 +100,7 @@ public class WebDriverSelection {
                     capabilities.setCapability("platformName", "Win10");
                     capabilities.setCapability("browserVersion", "latest");
 
-                    myPersonalDriver = new RemoteWebDriver(new URL(remoteIp), capabilities);
+                    myPersonalDriver = new RemoteWebDriver(new URL(remoteUrl), capabilities);
                 } catch (MalformedURLException mue) {
                     mue.printStackTrace();
                 }
